@@ -1,0 +1,27 @@
+#!/usr/bin/env python  
+import rospy
+
+from std_msgs.msg import Int16
+
+#author: SkookumAsFrig
+
+def callback(data):
+    sumab = data.a + data.b
+    rospy.loginfo("data received is " + str(data.a) + " and " str(data.b) ", and sum is " str(sumab))
+    pub.publish(sumab)
+
+def subber():
+    rospy.init_node('subber', anonymous=True)
+    rospy.Subscriber('two_ints', Int16, callback)
+
+def talker():
+    pub = rospy.Publisher('sum', Int16, queue_size = 10)
+    rospy.init_node('talker', anonymous=True)
+
+if __name__ == '__main__':
+    try:
+        talker()
+        subber()
+        rospy.spin()
+    except rospy.ROSInterruptException:
+        pass
