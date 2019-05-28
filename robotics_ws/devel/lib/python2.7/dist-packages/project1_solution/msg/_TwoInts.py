@@ -53,7 +53,7 @@ int16 b"""
     """
     try:
       _x = self
-      buff.write(_struct_2h.pack(_x.a, _x.b))
+      buff.write(_get_struct_2h().pack(_x.a, _x.b))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -67,7 +67,7 @@ int16 b"""
       _x = self
       start = end
       end += 4
-      (_x.a, _x.b,) = _struct_2h.unpack(str[start:end])
+      (_x.a, _x.b,) = _get_struct_2h().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -81,7 +81,7 @@ int16 b"""
     """
     try:
       _x = self
-      buff.write(_struct_2h.pack(_x.a, _x.b))
+      buff.write(_get_struct_2h().pack(_x.a, _x.b))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -96,10 +96,18 @@ int16 b"""
       _x = self
       start = end
       end += 4
-      (_x.a, _x.b,) = _struct_2h.unpack(str[start:end])
+      (_x.a, _x.b,) = _get_struct_2h().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_2h = struct.Struct("<2h")
+def _get_struct_I():
+    global _struct_I
+    return _struct_I
+_struct_2h = None
+def _get_struct_2h():
+    global _struct_2h
+    if _struct_2h is None:
+        _struct_2h = struct.Struct("<2h")
+    return _struct_2h

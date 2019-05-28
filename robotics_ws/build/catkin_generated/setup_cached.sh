@@ -8,4 +8,4 @@
 
 # modified environment variables
 export PWD="/home/skookum/Robotics/robotics_ws/build"
-export ROS_PACKAGE_PATH="/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src:/home/skookum/Robotics/1/catkin_ws/src:/home/skookum/Robotics/robotics_ws/src:/opt/ros/melodic/share"
+export ROS_PACKAGE_PATH="/home/skookum/Robotics/robotics_ws/src:/opt/ros/melodic/share"

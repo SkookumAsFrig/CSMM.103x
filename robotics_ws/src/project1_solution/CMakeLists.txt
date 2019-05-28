@@ -6,6 +6,7 @@ project(project1_solution)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  roscpp
   std_msgs
   message_generation
 )
@@ -101,7 +102,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES tf2_examples
- CATKIN_DEPENDS rospy message_runtime
+ CATKIN_DEPENDS rospy
 #  DEPENDS system_lib
 )
 
@@ -185,3 +186,9 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(pub_sub src/pub_sub.cpp)
+target_link_libraries(pub_sub $(catkin_LIBRARIES))
+add_dependencies(pub_sub $(catkin_EXPORTED_TARGETS))
+#add_dependencies(pub_sub project1_solution_generate_messages_cpp)
+

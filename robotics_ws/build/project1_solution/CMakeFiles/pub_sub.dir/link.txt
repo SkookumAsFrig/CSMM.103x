@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/pub_sub.dir/src/pub_sub.cpp.o  -o /home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub $(catkin_LIBRARIES) 

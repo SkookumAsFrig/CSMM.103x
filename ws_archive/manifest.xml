@@ -1,0 +1,21 @@
+<package>
+  <description brief="project1_solution">
+
+     project1_solution
+
+  </description>
+  Have to create this for integrating c++ node.
+  <author>Skookum</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki</url>
+  
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="TwoInts"/>
+  <depend package="message_generation"/>
+
+</package>
+
+
