@@ -188,7 +188,7 @@ include_directories(
 # catkin_add_nosetests(test)
 
 add_executable(pub_sub src/pub_sub.cpp)
-target_link_libraries(pub_sub $(catkin_LIBRARIES))
-add_dependencies(pub_sub $(catkin_EXPORTED_TARGETS))
+target_link_libraries(pub_sub ${catkin_LIBRARIES})
+add_dependencies(pub_sub ${catkin_EXPORTED_TARGETS})
 #add_dependencies(pub_sub project1_solution_generate_messages_cpp)
 

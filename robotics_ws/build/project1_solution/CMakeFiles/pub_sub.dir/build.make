@@ -90,6 +90,25 @@ pub_sub_EXTERNAL_OBJECTS =
 
 /home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: project1_solution/CMakeFiles/pub_sub.dir/src/pub_sub.cpp.o
 /home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: project1_solution/CMakeFiles/pub_sub.dir/build.make
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/libroscpp.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_filesystem.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_signals.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/librosconsole.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/liblog4cxx.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_regex.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/libroscpp_serialization.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/librostime.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /opt/ros/melodic/lib/libcpp_common.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_system.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_thread.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_chrono.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_date_time.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libboost_atomic.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libpthread.so
+/home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
 /home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub: project1_solution/CMakeFiles/pub_sub.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/skookum/Robotics/robotics_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/skookum/Robotics/robotics_ws/devel/lib/project1_solution/pub_sub"
 	cd /home/skookum/Robotics/robotics_ws/build/project1_solution && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pub_sub.dir/link.txt --verbose=$(VERBOSE)

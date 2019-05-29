@@ -9,7 +9,7 @@ void CallBack(const project1_solution::TwoInts& msg)
 {
 	std_msgs::Int16 pubmsg;
 	pubmsg.data = msg.a + msg.b;
-	ROS_INFO("Received %d and %d, sum is %d", msg.a, msg.b, pubmsg);
+	ROS_INFO("Received %d and %d, sum is %d", msg.a, msg.b, pubmsg.data);
 	pubber.publish(pubmsg);
 }
 
