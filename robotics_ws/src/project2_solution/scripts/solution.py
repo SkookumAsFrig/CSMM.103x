@@ -11,8 +11,8 @@ import geometry_msgs.msg
 def publish_transforms():
     t1 = geometry_msgs.msg.TransformStamped()
     t1.header.stamp = rospy.Time.now()
-    t1.header.frame_id = "base"
-    t1.child_frame_id = "object"
+    t1.header.frame_id = "base_frame"
+    t1.child_frame_id = "object_frame"
     t1.transform.translation.x = 0.0
     t1.transform.translation.y = 1.0
     t1.transform.translation.z = 1.0
@@ -25,8 +25,8 @@ def publish_transforms():
 
     t2 = geometry_msgs.msg.TransformStamped()
     t2.header.stamp = rospy.Time.now()
-    t2.header.frame_id = "base"
-    t2.child_frame_id = "robot"
+    t2.header.frame_id = "base_frame"
+    t2.child_frame_id = "robot_frame"
     t2.transform.translation.x = 0.0
     t2.transform.translation.y = -1.0
     t2.transform.translation.z = 0.0
@@ -39,8 +39,8 @@ def publish_transforms():
 
     t3 = geometry_msgs.msg.TransformStamped()
     t3.header.stamp = rospy.Time.now()
-    t3.header.frame_id = "robot"
-    t3.child_frame_id = "camera"
+    t3.header.frame_id = "robot_frame"
+    t3.child_frame_id = "camera_frame"
     t3.transform.translation.x = 0.0
     t3.transform.translation.y = 0.1
     t3.transform.translation.z = 0.1
@@ -48,6 +48,12 @@ def publish_transforms():
     # t3.transform.rotation.y = 0
     # t3.transform.rotation.z = 0
     # t3.transform.rotation.w = 1
+
+    t1mat = numpy.dot(tf.transformations.translation_matrix((0.0, 1.0, 1.0)),
+            tf.transformations.quaternion_matrix(q1))
+
+    Pos1mat = t1mat[0:3, 3]
+    Pos1mat = numpy.append(Pos1mat/numpy.linalg.norm(Pos1mat),1)
 
     t2mat = numpy.dot(tf.transformations.translation_matrix((0.0, -1.0, 0.0)),
             tf.transformations.quaternion_matrix(q2))
@@ -65,7 +71,7 @@ def publish_transforms():
 
     newarr = numpy.linalg.inv(Tall)
 
-    Orimat = numpy.array([0, 0, 0, 1]) #In global frame
+    Orimat = Pos1mat #numpy.array([0, 0, 0, 1]) #In global frame
     CamVec = numpy.dot(newarr, Orimat)[0:3] #In Camera frame,
     #the vector pointing from camera to origin
     CamVec = CamVec/numpy.linalg.norm(CamVec)
@@ -73,7 +79,7 @@ def publish_transforms():
     RotVec = numpy.array([1, 0, 0])
 
     v = numpy.cross(RotVec, CamVec)
-    s = numpy.linalg.norm(v)
+    # s = numpy.linalg.norm(v)
     c = numpy.dot(RotVec, CamVec)
 
     vx = numpy.array([[0, -v[2], v[1]],[v[2], 0, -v[0]],[-v[1], v[0], 0]])
