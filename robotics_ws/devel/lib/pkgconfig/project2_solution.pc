@@ -1,0 +1,8 @@
+prefix=/home/skookum/Robotics/robotics_ws/devel
+
+Name: project2_solution
+Description: Description of project2_solution
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/skookum/Robotics/robotics_ws/devel/lib 
+Requires: 

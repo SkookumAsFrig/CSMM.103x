@@ -1,8 +1,8 @@
-# Install script for directory: /home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution
+# Install script for directory: /home/skookum/Robotics/robotics_ws/src/project1_solution
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/skookum/Robotics/robotics_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,54 +32,59 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution/msg" TYPE FILE FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg")
+# Is this installation the result of a crosscompile?
+if(NOT DEFINED CMAKE_CROSSCOMPILING)
+  set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution/cmake" TYPE FILE FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/project1_solution/catkin_generated/installspace/project1_solution-msg-paths.cmake")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution/msg" TYPE FILE FILES "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/include/project1_solution")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution/cmake" TYPE FILE FILES "/home/skookum/Robotics/robotics_ws/build/project1_solution/catkin_generated/installspace/project1_solution-msg-paths.cmake")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/share/roseus/ros/project1_solution")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/skookum/Robotics/robotics_ws/devel/include/project1_solution")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/share/common-lisp/ros/project1_solution")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/skookum/Robotics/robotics_ws/devel/share/roseus/ros/project1_solution")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/share/gennodejs/ros/project1_solution")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/skookum/Robotics/robotics_ws/devel/share/common-lisp/ros/project1_solution")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/lib/python2.7/dist-packages/project1_solution")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/skookum/Robotics/robotics_ws/devel/share/gennodejs/ros/project1_solution")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/lib/python2.7/dist-packages/project1_solution")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/skookum/Robotics/robotics_ws/devel/lib/python2.7/dist-packages/project1_solution")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/project1_solution/catkin_generated/installspace/project1_solution.pc")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/skookum/Robotics/robotics_ws/devel/lib/python2.7/dist-packages/project1_solution")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution/cmake" TYPE FILE FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/project1_solution/catkin_generated/installspace/project1_solution-msg-extras.cmake")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/skookum/Robotics/robotics_ws/build/project1_solution/catkin_generated/installspace/project1_solution.pc")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution/cmake" TYPE FILE FILES "/home/skookum/Robotics/robotics_ws/build/project1_solution/catkin_generated/installspace/project1_solution-msg-extras.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution/cmake" TYPE FILE FILES
-    "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/project1_solution/catkin_generated/installspace/project1_solutionConfig.cmake"
-    "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/project1_solution/catkin_generated/installspace/project1_solutionConfig-version.cmake"
+    "/home/skookum/Robotics/robotics_ws/build/project1_solution/catkin_generated/installspace/project1_solutionConfig.cmake"
+    "/home/skookum/Robotics/robotics_ws/build/project1_solution/catkin_generated/installspace/project1_solutionConfig-version.cmake"
     )
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution" TYPE FILE FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/package.xml")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1_solution" TYPE FILE FILES "/home/skookum/Robotics/robotics_ws/src/project1_solution/package.xml")
 endif()
 

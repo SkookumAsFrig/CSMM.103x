@@ -1,8 +1,8 @@
-# Install script for directory: /home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/two_int_talker
+# Install script for directory: /home/skookum/Robotics/robotics_ws/src/two_int_talker
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/skookum/Robotics/robotics_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,18 +32,23 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/two_int_talker/catkin_generated/installspace/two_int_talker.pc")
+# Is this installation the result of a crosscompile?
+if(NOT DEFINED CMAKE_CROSSCOMPILING)
+  set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/skookum/Robotics/robotics_ws/build/two_int_talker/catkin_generated/installspace/two_int_talker.pc")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/two_int_talker/cmake" TYPE FILE FILES
-    "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/two_int_talker/catkin_generated/installspace/two_int_talkerConfig.cmake"
-    "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build/two_int_talker/catkin_generated/installspace/two_int_talkerConfig-version.cmake"
+    "/home/skookum/Robotics/robotics_ws/build/two_int_talker/catkin_generated/installspace/two_int_talkerConfig.cmake"
+    "/home/skookum/Robotics/robotics_ws/build/two_int_talker/catkin_generated/installspace/two_int_talkerConfig-version.cmake"
     )
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/two_int_talker" TYPE FILE FILES "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/two_int_talker/package.xml")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/two_int_talker" TYPE FILE FILES "/home/skookum/Robotics/robotics_ws/src/two_int_talker/package.xml")
 endif()
 

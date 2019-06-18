@@ -7,9 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/opt/ros/kinetic/lib/x86_64-linux-gnu:/home/jafar/bursabot_master/devel/lib:/home/jafar/catkin_ws/devel/lib:/opt/ros/kinetic/lib"
-export PKG_CONFIG_PATH="/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig:/home/jafar/bursabot_master/devel/lib/pkgconfig:/home/jafar/catkin_ws/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig"
-export PWD="/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src:$ROS_PACKAGE_PATH"
+export PWD="/home/skookum/Robotics/robotics_ws/build"

@@ -44,6 +44,7 @@ struct TwoInts_
 
 
 
+
   typedef boost::shared_ptr< ::project1_solution::TwoInts_<ContainerAllocator> > Ptr;
   typedef boost::shared_ptr< ::project1_solution::TwoInts_<ContainerAllocator> const> ConstPtr;
 
@@ -75,7 +76,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'project1_solution': ['/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg']}
+// {'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg'], 'project1_solution': ['/home/skookum/Robotics/robotics_ws/src/project1_solution/msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -142,9 +143,9 @@ struct Definition< ::project1_solution::TwoInts_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int16 a\n\
-int16 b\n\
-";
+    return "int16 a\n"
+"int16 b\n"
+;
   }
 
   static const char* value(const ::project1_solution::TwoInts_<ContainerAllocator>&) { return value(); }
@@ -166,7 +167,7 @@ namespace serialization
       stream.next(m.b);
     }
 
-    ROS_DECLARE_ALLINONE_SERIALIZER;
+    ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct TwoInts_
 
 } // namespace serialization

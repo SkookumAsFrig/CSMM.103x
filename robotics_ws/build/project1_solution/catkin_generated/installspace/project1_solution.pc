@@ -1,8 +1,0 @@
-prefix=/home/skookum/Robotics/robotics_ws/install
-
-Name: project1_solution
-Description: Description of project1_solution
-Version: 0.0.0
-Cflags: -I/home/skookum/Robotics/robotics_ws/install/include
-Libs: -L/home/skookum/Robotics/robotics_ws/install/lib 
-Requires: rospy

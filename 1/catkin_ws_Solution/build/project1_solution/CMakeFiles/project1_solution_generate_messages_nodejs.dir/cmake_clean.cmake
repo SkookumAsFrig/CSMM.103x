@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/project1_solution_generate_messages_nodejs"
-  "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/devel/share/gennodejs/ros/project1_solution/msg/TwoInts.js"
+  "/home/skookum/Robotics/robotics_ws/devel/share/gennodejs/ros/project1_solution/msg/TwoInts.js"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -10,4 +10,7 @@ set(two_int_talker_EXEC_DEPENDS "rospy" "project1_solution" "std_msgs" "message_
 set(two_int_talker_RUN_DEPENDS "rospy" "project1_solution" "std_msgs" "message_runtime")
 set(two_int_talker_TEST_DEPENDS )
 set(two_int_talker_DOC_DEPENDS )
+set(two_int_talker_URL_WEBSITE "")
+set(two_int_talker_URL_BUGTRACKER "")
+set(two_int_talker_URL_REPOSITORY "")
 set(two_int_talker_DEPRECATED "")

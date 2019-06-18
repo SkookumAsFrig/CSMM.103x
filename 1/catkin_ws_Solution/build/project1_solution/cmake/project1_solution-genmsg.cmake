@@ -2,7 +2,7 @@
 
 message(STATUS "project1_solution: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iproject1_solution:/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iproject1_solution:/home/skookum/Robotics/robotics_ws/src/project1_solution/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,9 +17,9 @@ add_custom_target(project1_solution_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
+get_filename_component(_filename "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
 add_custom_target(_project1_solution_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "project1_solution" "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "project1_solution" "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg" ""
 )
 
 #
@@ -29,7 +29,7 @@ add_custom_target(_project1_solution_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(project1_solution
-  "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg"
+  "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/project1_solution
@@ -49,7 +49,7 @@ add_custom_target(project1_solution_generate_messages_cpp
 add_dependencies(project1_solution_generate_messages project1_solution_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
+get_filename_component(_filename "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
 add_dependencies(project1_solution_generate_messages_cpp _project1_solution_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -62,7 +62,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS project1_solution_generate_messages
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(project1_solution
-  "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg"
+  "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/project1_solution
@@ -82,7 +82,7 @@ add_custom_target(project1_solution_generate_messages_eus
 add_dependencies(project1_solution_generate_messages project1_solution_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
+get_filename_component(_filename "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
 add_dependencies(project1_solution_generate_messages_eus _project1_solution_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -95,7 +95,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS project1_solution_generate_messages
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(project1_solution
-  "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg"
+  "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/project1_solution
@@ -115,7 +115,7 @@ add_custom_target(project1_solution_generate_messages_lisp
 add_dependencies(project1_solution_generate_messages project1_solution_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
+get_filename_component(_filename "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
 add_dependencies(project1_solution_generate_messages_lisp _project1_solution_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -128,7 +128,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS project1_solution_generate_messages
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(project1_solution
-  "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg"
+  "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/project1_solution
@@ -148,7 +148,7 @@ add_custom_target(project1_solution_generate_messages_nodejs
 add_dependencies(project1_solution_generate_messages project1_solution_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
+get_filename_component(_filename "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
 add_dependencies(project1_solution_generate_messages_nodejs _project1_solution_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -161,7 +161,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS project1_solution_generate_messages
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(project1_solution
-  "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg"
+  "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/project1_solution
@@ -181,7 +181,7 @@ add_custom_target(project1_solution_generate_messages_py
 add_dependencies(project1_solution_generate_messages project1_solution_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jafar/Desktop/Courses/RoboticsCol/1/catkin_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
+get_filename_component(_filename "/home/skookum/Robotics/robotics_ws/src/project1_solution/msg/TwoInts.msg" NAME_WE)
 add_dependencies(project1_solution_generate_messages_py _project1_solution_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -200,7 +200,9 @@ if(gencpp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/pr
     DESTINATION ${gencpp_INSTALL_DIR}
   )
 endif()
-add_dependencies(project1_solution_generate_messages_cpp std_msgs_generate_messages_cpp)
+if(TARGET std_msgs_generate_messages_cpp)
+  add_dependencies(project1_solution_generate_messages_cpp std_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/project1_solution)
   # install generated code
@@ -209,7 +211,9 @@ if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/pr
     DESTINATION ${geneus_INSTALL_DIR}
   )
 endif()
-add_dependencies(project1_solution_generate_messages_eus std_msgs_generate_messages_eus)
+if(TARGET std_msgs_generate_messages_eus)
+  add_dependencies(project1_solution_generate_messages_eus std_msgs_generate_messages_eus)
+endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/project1_solution)
   # install generated code
@@ -218,7 +222,9 @@ if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/
     DESTINATION ${genlisp_INSTALL_DIR}
   )
 endif()
-add_dependencies(project1_solution_generate_messages_lisp std_msgs_generate_messages_lisp)
+if(TARGET std_msgs_generate_messages_lisp)
+  add_dependencies(project1_solution_generate_messages_lisp std_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/project1_solution)
   # install generated code
@@ -227,14 +233,18 @@ if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_D
     DESTINATION ${gennodejs_INSTALL_DIR}
   )
 endif()
-add_dependencies(project1_solution_generate_messages_nodejs std_msgs_generate_messages_nodejs)
+if(TARGET std_msgs_generate_messages_nodejs)
+  add_dependencies(project1_solution_generate_messages_nodejs std_msgs_generate_messages_nodejs)
+endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/project1_solution)
-  install(CODE "execute_process(COMMAND \"/usr/bin/python\" -m compileall \"${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/project1_solution\")")
+  install(CODE "execute_process(COMMAND \"/usr/bin/python2\" -m compileall \"${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/project1_solution\")")
   # install generated code
   install(
     DIRECTORY ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/project1_solution
     DESTINATION ${genpy_INSTALL_DIR}
   )
 endif()
-add_dependencies(project1_solution_generate_messages_py std_msgs_generate_messages_py)
+if(TARGET std_msgs_generate_messages_py)
+  add_dependencies(project1_solution_generate_messages_py std_msgs_generate_messages_py)
+endif()

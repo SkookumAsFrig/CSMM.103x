@@ -131,8 +131,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/skookum/Robotics/robotics_ws/build/gtest/cmake_install.cmake")
-  include("/home/skookum/Robotics/robotics_ws/build/project1_solution/cmake_install.cmake")
-  include("/home/skookum/Robotics/robotics_ws/build/two_int_talker/cmake_install.cmake")
+  include("/home/skookum/Robotics/robotics_ws/build/marker_publisher/cmake_install.cmake")
+  include("/home/skookum/Robotics/robotics_ws/build/project2_solution/cmake_install.cmake")
 
 endif()
 

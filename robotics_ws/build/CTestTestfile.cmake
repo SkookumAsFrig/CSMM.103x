@@ -5,5 +5,5 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
-subdirs("project1_solution")
-subdirs("two_int_talker")
+subdirs("marker_publisher")
+subdirs("project2_solution")

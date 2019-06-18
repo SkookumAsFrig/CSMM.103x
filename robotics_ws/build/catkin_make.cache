@@ -1,2 +1,2 @@
-project1_solution:two_int_talker
+marker_publisher:project2_solution
 -DCATKIN_DEVEL_PREFIX=/home/skookum/Robotics/robotics_ws/devel -DCMAKE_INSTALL_PREFIX=/home/skookum/Robotics/robotics_ws/install -G Unix Makefiles
