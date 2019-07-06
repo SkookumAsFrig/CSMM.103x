@@ -5,5 +5,7 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
-subdirs("marker_publisher")
-subdirs("project2_solution")
+subdirs("lwr_robot/lwr_defs")
+subdirs("forward_kinematics")
+subdirs("robot_sim")
+subdirs("robot_mover")
