@@ -27,9 +27,7 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
                       red_control, q_current, q0_desired):
     num_joints = len(joint_transforms)
     dq = numpy.zeros(num_joints)
-    #-------------------- Fill in your code here ---------------------------
-    generaleps = 1e-5
-    
+    #-------------------- Fill in your code here ---------------------------    
     deltaXmat = numpy.dot(numpy.linalg.inv(b_T_ee_current), b_T_ee_desired)
     deltaTrans = deltaXmat[:3, 3]
     ang, ax = rotation_from_matrix(deltaXmat)
@@ -47,8 +45,8 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     # print("deltaTrans from rotational is {}").format(deltaEEpos)
 
     #-------------------- DEBUGGING ---------------------------
-    Tlgain = 0.5
-    Rotgain = 0.5
+    Tlgain = 1
+    Rotgain = 1
     VTEE = Tlgain*deltaTrans
     VTsize = numpy.linalg.norm(VTEE)
     VREE = Rotgain*deltaRot
@@ -64,6 +62,14 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
 
     VEE = numpy.hstack((VTEE, VREE))
 
+    vth = 1e-3
+
+    for ind in range(len(VEE)):
+        if abs(VEE[ind])<vth:
+            VEE[ind] = 0
+
+    # print(VEE)
+
     Jac = numpy.zeros((6,1))
 
 
@@ -76,12 +82,22 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
         LastCol = RightHalf[:,2]
         LastCol.shape = (6,1)
         Jac = numpy.hstack((Jac, LastCol))
+        # Note, can also use given adjoint matrix function to simplify code
 
     Jac = Jac[:, 1:]
-    epsilon = 1e-5
+    epsilon = 1e-7
     invJac = numpy.linalg.pinv(Jac, epsilon)
 
     dq = numpy.dot(invJac, VEE)
+
+    if red_control:
+        qsize = len(q_current)
+        qmat = numpy.zeros(qsize)
+        qgain = 1
+        qmat[0] = qgain*(q0_desired - q_current[0])
+        
+        qn = numpy.dot(numpy.identity(qsize) - numpy.dot(invJac, Jac), qmat)
+        dq = dq + qn
 
     biggestq = max(dq)
     
