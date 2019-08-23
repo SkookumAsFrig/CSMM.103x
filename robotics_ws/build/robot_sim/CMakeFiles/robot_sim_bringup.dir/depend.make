@@ -4,6 +4,7 @@
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /home/skookum/Robotics/robotics_ws/src/robot_sim/include/robot_sim/joint_state_publisher.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /home/skookum/Robotics/robotics_ws/src/robot_sim/include/robot_sim/position_controller.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /home/skookum/Robotics/robotics_ws/src/robot_sim/include/robot_sim/robot.h
+robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /home/skookum/Robotics/robotics_ws/src/robot_sim/include/robot_sim/trajectory_executer.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /home/skookum/Robotics/robotics_ws/src/robot_sim/include/robot_sim/velocity_controller.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /home/skookum/Robotics/robotics_ws/src/robot_sim/src/robot_sim_bringup.cpp
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
@@ -64,6 +65,8 @@ robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/sensor_msgs/JointState.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
+robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/trajectory_msgs/JointTrajectory.h
+robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/trajectory_msgs/JointTrajectoryPoint.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/urdf/model.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/urdf/urdfdom_compatibility.h
 robot_sim/CMakeFiles/robot_sim_bringup.dir/src/robot_sim_bringup.cpp.o: /opt/ros/melodic/include/urdf/visibility_control.hpp

@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/robot_sim.dir/src/robot.cpp.o"
   "CMakeFiles/robot_sim.dir/src/velocity_controller.cpp.o"
   "CMakeFiles/robot_sim.dir/src/position_controller.cpp.o"
+  "CMakeFiles/robot_sim.dir/src/trajectory_executer.cpp.o"
   "/home/skookum/Robotics/robotics_ws/devel/lib/librobot_sim.pdb"
   "/home/skookum/Robotics/robotics_ws/devel/lib/librobot_sim.so"
 )

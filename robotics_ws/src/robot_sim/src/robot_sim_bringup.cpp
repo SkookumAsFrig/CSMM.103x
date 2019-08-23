@@ -9,6 +9,7 @@
 #include "robot_sim/robot.h"
 #include "robot_sim/velocity_controller.h"
 #include "robot_sim/position_controller.h"
+#include "robot_sim/trajectory_executer.h"
 
 void setTargetValues(boost::shared_ptr<robot_sim::Robot> robot, int num_joints)
 {
@@ -46,7 +47,7 @@ int main(int argc, char **argv)
     ROS_ERROR("Robot sim bringup: failed to read urdf from parameter server");
     return 0;
   }
-  for (std::map<std::string, urdf::JointSharedPtr>::iterator it = model.joints_.begin();
+  for (std::map<std::string, urdf::JointSharedPtr >::iterator it = model.joints_.begin();
        it != model.joints_.end(); it++)
   {
     if (it->second->type != urdf::Joint::FIXED)
@@ -84,6 +85,12 @@ int main(int argc, char **argv)
   if (!pos_command->init())
   {
     ROS_ERROR("Failed to initialize position command");
+    return 0;
+  }
+  boost::shared_ptr<robot_sim::TrajectoryExecuter> traj_executer(new robot_sim::TrajectoryExecuter(robot));
+  if (!traj_executer->init())
+  {
+    ROS_ERROR("Failed to initialize trajectory executer");
     return 0;
   }
 

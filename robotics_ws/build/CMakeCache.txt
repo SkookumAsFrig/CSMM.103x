@@ -296,14 +296,11 @@ actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
 //The directory containing a CMake configuration file for actionlib_msgs.
 actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
 
-//Value Computed by CMake
-cartesian_control_BINARY_DIR:STATIC=/home/skookum/Robotics/robotics_ws/build/cartesian_control
-
-//Value Computed by CMake
-cartesian_control_SOURCE_DIR:STATIC=/home/skookum/Robotics/robotics_ws/src/cartesian_control
-
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
+
+//The directory containing a CMake configuration file for control_msgs.
+control_msgs_DIR:PATH=/opt/ros/melodic/share/control_msgs/cmake
 
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
@@ -382,13 +379,19 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 interactive_markers_DIR:PATH=/opt/ros/melodic/share/interactive_markers/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/melodic/lib/librosconsole_bridge.so
+lib:FILEPATH=/opt/ros/melodic/lib/libtf2.so
 
 //Value Computed by CMake
-lwr_defs_BINARY_DIR:STATIC=/home/skookum/Robotics/robotics_ws/build/lwr_defs
+lwr_defs_BINARY_DIR:STATIC=/home/skookum/Robotics/robotics_ws/build/lwr_robot/lwr_defs
 
 //Value Computed by CMake
-lwr_defs_SOURCE_DIR:STATIC=/home/skookum/Robotics/robotics_ws/src/lwr_defs
+lwr_defs_SOURCE_DIR:STATIC=/home/skookum/Robotics/robotics_ws/src/lwr_robot/lwr_defs
+
+//Value Computed by CMake
+lwr_robot_moveit_config_BINARY_DIR:STATIC=/home/skookum/Robotics/robotics_ws/build/lwr_robot_moveit_config
+
+//Value Computed by CMake
+lwr_robot_moveit_config_SOURCE_DIR:STATIC=/home/skookum/Robotics/robotics_ws/src/lwr_robot_moveit_config
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/melodic/share/message_filters/cmake
@@ -398,6 +401,24 @@ message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
+
+//Value Computed by CMake
+motion_planning_BINARY_DIR:STATIC=/home/skookum/Robotics/robotics_ws/build/motion_planning
+
+//Value Computed by CMake
+motion_planning_SOURCE_DIR:STATIC=/home/skookum/Robotics/robotics_ws/src/motion_planning
+
+//The directory containing a CMake configuration file for moveit_commander.
+moveit_commander_DIR:PATH=/opt/ros/melodic/share/moveit_commander/cmake
+
+//The directory containing a CMake configuration file for moveit_msgs.
+moveit_msgs_DIR:PATH=/opt/ros/melodic/share/moveit_msgs/cmake
+
+//The directory containing a CMake configuration file for object_recognition_msgs.
+object_recognition_msgs_DIR:PATH=/opt/ros/melodic/share/object_recognition_msgs/cmake
+
+//The directory containing a CMake configuration file for octomap_msgs.
+octomap_msgs_DIR:PATH=/opt/ros/melodic/share/octomap_msgs/cmake
 
 //Value Computed by CMake
 robot_sim_BINARY_DIR:STATIC=/home/skookum/Robotics/robotics_ws/build/robot_sim
@@ -438,6 +459,9 @@ rostime_DIR:PATH=/opt/ros/melodic/share/rostime/cmake
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
 
+//The directory containing a CMake configuration file for shape_msgs.
+shape_msgs_DIR:PATH=/opt/ros/melodic/share/shape_msgs/cmake
+
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/melodic/share/std_msgs/cmake
 
@@ -456,11 +480,11 @@ tf2_ros_DIR:PATH=/opt/ros/melodic/share/tf2_ros/cmake
 //The directory containing a CMake configuration file for tf.
 tf_DIR:PATH=/opt/ros/melodic/share/tf/cmake
 
+//The directory containing a CMake configuration file for trajectory_msgs.
+trajectory_msgs_DIR:PATH=/opt/ros/melodic/share/trajectory_msgs/cmake
+
 //The directory containing a CMake configuration file for urdf.
 urdf_DIR:PATH=/opt/ros/melodic/share/urdf/cmake
-
-//The directory containing a CMake configuration file for urdfdom_py.
-urdfdom_py_DIR:PATH=/opt/ros/melodic/share/urdfdom_py/cmake
 
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/melodic/share/visualization_msgs/cmake
@@ -582,7 +606,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -4,6 +4,7 @@ project(robot_sim)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
+  trajectory_msgs
   urdf
 )
 
@@ -15,6 +16,7 @@ catkin_package(
   CATKIN_DEPENDS 
     roscpp 
     sensor_msgs
+    trajectory_msgs
     urdf
 )
 
@@ -23,11 +25,16 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+if(CMAKE_COMPILER_IS_GNUCXX)
+  add_definitions(-std=gnu++0x)
+endif()
+
 add_library(robot_sim
   src/joint_state_publisher.cpp
   src/robot.cpp
   src/velocity_controller.cpp
   src/position_controller.cpp
+  src/trajectory_executer.cpp
 )
 
 link_directories(/opt/ros/melodic/lib/)

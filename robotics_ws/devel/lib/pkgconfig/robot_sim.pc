@@ -5,4 +5,4 @@ Description: Description of robot_sim
 Version: 0.0.0
 Cflags: -I/home/skookum/Robotics/robotics_ws/src/robot_sim/include
 Libs: -L/home/skookum/Robotics/robotics_ws/devel/lib -lrobot_sim
-Requires: roscpp sensor_msgs urdf
+Requires: roscpp sensor_msgs trajectory_msgs urdf
