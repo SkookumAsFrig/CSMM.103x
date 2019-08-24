@@ -6,6 +6,7 @@ import numpy
 import random
 from threading import Thread, Lock
 import sys
+import time
 
 import actionlib
 import control_msgs.msg
@@ -17,6 +18,7 @@ import rospy
 import sensor_msgs.msg
 import tf
 import trajectory_msgs.msg
+
 
 def convert_to_message(T):
     t = geometry_msgs.msg.Pose()
@@ -203,6 +205,27 @@ class MoveArm(object):
         res = self.state_valid_service(req)
         return res.valid
 
+    def check_collision(self, ori_node_joints, diff_vec):
+        sample_factor = numpy.array([])
+        for ind in range(self.num_joints):
+            one_factor = abs(diff_vec[ind])/self.q_sample[ind]
+            sample_factor = numpy.hstack((sample_factor, one_factor))
+
+        big_ind = numpy.argmax(sample_factor)
+        sample_div = int(math.ceil(sample_factor[big_ind]))
+        sample_incre = diff_vec/sample_div
+
+        state_valid = True
+        base_q = ori_node_joints
+
+        for incre in range(sample_div):
+            base_q = base_q + sample_incre
+            state_valid = self.is_state_valid(list(base_q))
+            if not state_valid:
+                break
+        # returns the boolean value to: is there no collision?
+        return state_valid
+
     def motion_plan(self, q_start, q_goal, q_min, q_max):
         """
         q_start: list of joint values of the robot at the starting position.
@@ -214,10 +237,60 @@ class MoveArm(object):
         q_min: list of lower joint limits   
         q_max: list of upper joint limits
         q_list: list of points in C-space that the robot must go through
-        """"
+        """
         # Replace this with your code
 
-        q_list = [q_start, q_goal]
+        base_node = Node(q_start)
+        node_list = [base_node]
+
+        init_time = time.time()
+        stay_in_loop = True
+        found_path = False
+
+        pre_dist = 0.5
+
+        while(stay_in_loop):
+            dist_list = numpy.array([])
+            new_sample_list = numpy.array([])
+            for ind in range(self.num_joints):
+                sample = (self.q_max[ind] - self.q_min[ind])*random.random() + self.q_min[ind]
+                new_sample_list = numpy.hstack((new_sample_list, sample))
+
+            for node in node_list:
+                curr_node_diff = new_sample_list - numpy.array(node.GetConfig())
+                dist_list = numpy.hstack((dist_list, numpy.linalg.norm(curr_node_diff)))
+            
+            small_ind = numpy.argmin(dist_list)
+            small_node = node_list[small_ind]
+            small_node_joints = numpy.array(small_node.GetConfig())
+
+            small_vec = new_sample_list - small_node_joints  # difference vector from closest node to sample
+            scaled_small_vec = (pre_dist/dist_list[small_ind])*small_vec
+            scaled_sample = scaled_small_vec + small_node_joints
+
+            state_valid = self.check_collision(small_node_joints, scaled_small_vec)
+            end_valid = False
+            
+            if state_valid:
+                new_node = Node(list(scaled_sample))
+                new_node.SetParent(node_list[small_ind])
+                node_list.append(new_node)
+
+                diff_to_end = numpy.array(q_goal) - scaled_sample
+                end_valid = self.check_collision(scaled_sample, diff_to_end)
+
+            if (time.time() - init_time) > 150 or len(node_list) > 5000 or end_valid:
+                stay_in_loop = False
+
+        curr_trace = node_list[-1]
+        q_list = [q_goal]
+
+        while curr_trace.GetParent():
+            q_list.append(curr_trace.GetConfig())
+            curr_trace = curr_trace.GetParent()
+        
+        q_list.append(q_start)
+        q_list.reverse()
         
         return q_list
     
