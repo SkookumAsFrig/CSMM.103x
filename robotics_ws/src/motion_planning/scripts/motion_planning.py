@@ -19,6 +19,8 @@ import sensor_msgs.msg
 import tf
 import trajectory_msgs.msg
 
+from itertools import compress
+
 
 def convert_to_message(T):
     t = geometry_msgs.msg.Pose()
@@ -247,7 +249,7 @@ class MoveArm(object):
         stay_in_loop = True
         found_path = False
 
-        pre_dist = 0.5
+        pre_dist = 1
 
         while(stay_in_loop):
             dist_list = numpy.array([])
@@ -291,6 +293,20 @@ class MoveArm(object):
         
         q_list.append(q_start)
         q_list.reverse()
+
+        first_ind = 0
+
+        while first_ind < len(q_list)-2:
+            keep_vec = [True]*len(q_list)
+            for second_ind in range(first_ind+2, len(q_list)):
+                first_point = q_list[first_ind]
+                second_point = q_list[second_ind]
+                diff_vec = numpy.array(first_point) - numpy.array(second_point)
+                if self.check_collision(numpy.array(second_point), diff_vec):
+                    keep_vec[first_ind+1:second_ind] = [False]*(second_ind-first_ind-1)
+
+            q_list = list(compress(q_list, keep_vec))
+            first_ind = first_ind+1
         
         return q_list
     
