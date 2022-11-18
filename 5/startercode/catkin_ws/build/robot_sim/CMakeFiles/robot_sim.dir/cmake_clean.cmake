@@ -4,8 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/robot_sim.dir/src/velocity_controller.cpp.o"
   "CMakeFiles/robot_sim.dir/src/position_controller.cpp.o"
   "CMakeFiles/robot_sim.dir/src/trajectory_executer.cpp.o"
-  "/home/jafar/Desktop/Courses/RoboticsCol/5/startercode/catkin_ws/devel/.private/robot_sim/lib/librobot_sim.pdb"
-  "/home/jafar/Desktop/Courses/RoboticsCol/5/startercode/catkin_ws/devel/.private/robot_sim/lib/librobot_sim.so"
+  "/home/k5200/CSMM.103x/5/startercode/catkin_ws/devel/lib/librobot_sim.pdb"
+  "/home/k5200/CSMM.103x/5/startercode/catkin_ws/devel/lib/librobot_sim.so"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/mover.dir/src/mover.cpp.o"
-  "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/devel/.private/robot_mover/lib/robot_mover/mover.pdb"
-  "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/devel/.private/robot_mover/lib/robot_mover/mover"
+  "/home/k5200/CSMM.103x/3/startercode/catkin_ws/devel/lib/robot_mover/mover.pdb"
+  "/home/k5200/CSMM.103x/3/startercode/catkin_ws/devel/lib/robot_mover/mover"
 )
 
 # Per-language clean rules from dependency scanning.

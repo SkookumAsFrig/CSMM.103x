@@ -10,4 +10,7 @@ set(cartesian_control_EXEC_DEPENDS "interactive_markers" "rospy" "sensor_msgs" "
 set(cartesian_control_RUN_DEPENDS "interactive_markers" "rospy" "sensor_msgs" "tf" "urdfdom_py")
 set(cartesian_control_TEST_DEPENDS )
 set(cartesian_control_DOC_DEPENDS )
+set(cartesian_control_URL_WEBSITE "")
+set(cartesian_control_URL_BUGTRACKER "")
+set(cartesian_control_URL_REPOSITORY "")
 set(cartesian_control_DEPRECATED "")

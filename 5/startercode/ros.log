@@ -1,0 +1,8 @@
+ROSCORE: Usage: roscore [options]
+ROSCORE: 
+ROSCORE: roscore: error: -p option requires an argument
+PUB: [rospack] Error: package 'tf2_web_republisher' not found
+BR: stdbuf: failed to run command ‘./launch_rosbridge_server.py’: No such file or directory
+PROXY: [rospack] Error: package 'interactive_marker_proxy' not found
+KUKA: [31mRLException: [mp.launch] is not a launch file name[0m
+KUKA: [31mThe traceback for the exception was written to the log file[0m

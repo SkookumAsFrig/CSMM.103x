@@ -1,0 +1,7 @@
+ROSCORE: Usage: roscore [options]
+ROSCORE: 
+ROSCORE: roscore: error: -p option requires an argument
+PUB: [rospack] Error: package 'tf2_web_republisher' not found
+BR: stdbuf: failed to run command ‘./launch_rosbridge_server.py’: No such file or directory
+KUKA: [31m[ERROR] [1668711010.149237640]: [registerPublisher] Failed to contact master at [localhost:0].  Retrying...[0m
+MOVER: [31m[ERROR] [1668711011.148777151]: [registerPublisher] Failed to contact master at [localhost:0].  Retrying...[0m

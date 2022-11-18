@@ -1,1 +1,1 @@
-set(ORDERED_PATHS "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/devel/.private/robot_sim/lib;/opt/ros/kinetic/lib")
+set(ORDERED_PATHS "/opt/ros/melodic/lib")

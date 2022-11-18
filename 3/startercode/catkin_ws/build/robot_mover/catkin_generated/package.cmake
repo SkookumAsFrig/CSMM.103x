@@ -10,4 +10,7 @@ set(robot_mover_EXEC_DEPENDS "forward_kinematics" "lwr_defs" "robot_sim" "sensor
 set(robot_mover_RUN_DEPENDS "forward_kinematics" "lwr_defs" "robot_sim" "sensor_msgs" "std_msgs")
 set(robot_mover_TEST_DEPENDS )
 set(robot_mover_DOC_DEPENDS )
+set(robot_mover_URL_WEBSITE "")
+set(robot_mover_URL_BUGTRACKER "")
+set(robot_mover_URL_REPOSITORY "")
 set(robot_mover_DEPRECATED "")

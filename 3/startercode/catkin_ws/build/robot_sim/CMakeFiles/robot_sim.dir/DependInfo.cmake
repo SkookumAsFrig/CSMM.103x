@@ -4,23 +4,25 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/src/robot_sim/src/joint_state_publisher.cpp" "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/joint_state_publisher.cpp.o"
-  "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/src/robot_sim/src/position_controller.cpp" "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/position_controller.cpp.o"
-  "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/src/robot_sim/src/robot.cpp" "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/robot.cpp.o"
-  "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/src/robot_sim/src/velocity_controller.cpp" "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/velocity_controller.cpp.o"
+  "/home/k5200/CSMM.103x/3/startercode/catkin_ws/src/robot_sim/src/joint_state_publisher.cpp" "/home/k5200/CSMM.103x/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/joint_state_publisher.cpp.o"
+  "/home/k5200/CSMM.103x/3/startercode/catkin_ws/src/robot_sim/src/position_controller.cpp" "/home/k5200/CSMM.103x/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/position_controller.cpp.o"
+  "/home/k5200/CSMM.103x/3/startercode/catkin_ws/src/robot_sim/src/robot.cpp" "/home/k5200/CSMM.103x/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/robot.cpp.o"
+  "/home/k5200/CSMM.103x/3/startercode/catkin_ws/src/robot_sim/src/velocity_controller.cpp" "/home/k5200/CSMM.103x/3/startercode/catkin_ws/build/robot_sim/CMakeFiles/robot_sim.dir/src/velocity_controller.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "ROSCONSOLE_BACKEND_LOG4CXX"
+  "ROS_BUILD_SHARED_LIBS=1"
   "ROS_PACKAGE_NAME=\"robot_sim\""
   )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/src/robot_sim/include"
-  "/opt/ros/kinetic/include"
+  "/home/k5200/CSMM.103x/3/startercode/catkin_ws/src/robot_sim/include"
+  "/opt/ros/melodic/include"
+  "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
 
 # Targets to which this target links.

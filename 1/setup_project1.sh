@@ -1,4 +1,4 @@
-source /opt/ros/kinetic/setup.bash
+source /opt/ros/melodic/setup.bash
 
 export ROS_NODE_PORT=`get_free_port.py`
 export ROS_MASTER_URI=http://localhost:$ROS_NODE_PORT

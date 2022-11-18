@@ -10,4 +10,7 @@ set(motion_planning_EXEC_DEPENDS "actionlib" "control_msgs" "interactive_markers
 set(motion_planning_RUN_DEPENDS "actionlib" "control_msgs" "interactive_markers" "moveit_commander" "moveit_msgs" "rospy" "sensor_msgs" "visualization_msgs" "tf")
 set(motion_planning_TEST_DEPENDS )
 set(motion_planning_DOC_DEPENDS )
+set(motion_planning_URL_WEBSITE "")
+set(motion_planning_URL_BUGTRACKER "")
+set(motion_planning_URL_REPOSITORY "")
 set(motion_planning_DEPRECATED "")

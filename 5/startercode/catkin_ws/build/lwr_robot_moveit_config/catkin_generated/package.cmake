@@ -10,4 +10,7 @@ set(lwr_robot_moveit_config_EXEC_DEPENDS "moveit_ros_move_group" "moveit_planner
 set(lwr_robot_moveit_config_RUN_DEPENDS "moveit_ros_move_group" "moveit_planners_ompl" "moveit_ros_visualization" "joint_state_publisher" "robot_state_publisher" "xacro" "lwr_defs")
 set(lwr_robot_moveit_config_TEST_DEPENDS )
 set(lwr_robot_moveit_config_DOC_DEPENDS )
+set(lwr_robot_moveit_config_URL_WEBSITE "http://moveit.ros.org/")
+set(lwr_robot_moveit_config_URL_BUGTRACKER "https://github.com/ros-planning/moveit_setup_assistant/issues")
+set(lwr_robot_moveit_config_URL_REPOSITORY "https://github.com/ros-planning/moveit_setup_assistant")
 set(lwr_robot_moveit_config_DEPRECATED "")

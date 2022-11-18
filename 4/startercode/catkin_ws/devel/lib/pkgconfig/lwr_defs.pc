@@ -1,1 +1,8 @@
-/home/jafar/Desktop/Courses/RoboticsCol/4/startercode/catkin_ws/devel/.private/lwr_defs/lib/pkgconfig/lwr_defs.pc
+prefix=/home/k5200/CSMM.103x/4/startercode/catkin_ws/devel
+
+Name: lwr_defs
+Description: Description of lwr_defs
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: xacro

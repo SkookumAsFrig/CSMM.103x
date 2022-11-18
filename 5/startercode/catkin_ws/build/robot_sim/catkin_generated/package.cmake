@@ -10,4 +10,7 @@ set(robot_sim_EXEC_DEPENDS "forward_kinematics" "roscpp" "sensor_msgs" "trajecto
 set(robot_sim_RUN_DEPENDS "forward_kinematics" "roscpp" "sensor_msgs" "trajectory_msgs" "urdf")
 set(robot_sim_TEST_DEPENDS )
 set(robot_sim_DOC_DEPENDS )
+set(robot_sim_URL_WEBSITE "")
+set(robot_sim_URL_BUGTRACKER "")
+set(robot_sim_URL_REPOSITORY "")
 set(robot_sim_DEPRECATED "")

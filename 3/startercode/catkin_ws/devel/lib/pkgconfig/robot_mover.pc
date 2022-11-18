@@ -1,1 +1,8 @@
-/home/jafar/Desktop/Courses/RoboticsCol/3/startercode/catkin_ws/devel/.private/robot_mover/lib/pkgconfig/robot_mover.pc
+prefix=/home/k5200/CSMM.103x/3/startercode/catkin_ws/devel
+
+Name: robot_mover
+Description: Description of robot_mover
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
