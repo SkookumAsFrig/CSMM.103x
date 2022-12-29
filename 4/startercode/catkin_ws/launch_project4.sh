@@ -1,0 +1,2 @@
+echo -e 'run the following commands one by one in bash:\nsource devel/setup.bash\nroscore &\nrosparam set robot_description --textfile kuka_lwr_arm.urdf\nrosrun robot_sim robot_sim_bringup &\nrosrun robot_state_publisher robot_state_publisher &\nrosrun cartesian_control marker_control.py &\nrosrun cartesian_control cartesian_control.py &\nrosrun rviz rviz\n\nuse kill $(jobs -p) to exit background jobs'
+

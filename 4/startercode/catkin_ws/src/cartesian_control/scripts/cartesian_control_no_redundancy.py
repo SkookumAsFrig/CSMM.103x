@@ -27,83 +27,29 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
                       red_control, q_current, q0_desired):
     num_joints = len(joint_transforms)
     dq = numpy.zeros(num_joints)
-    #-------------------- Fill in your code here ---------------------------    
-    deltaXmat = numpy.dot(numpy.linalg.inv(b_T_ee_current), b_T_ee_desired)
-    deltaTrans = deltaXmat[:3, 3]
-    ang, ax = rotation_from_matrix(deltaXmat)
-    deltaRot = ang*ax
-    #-------------------- DEBUGGING ---------------------------
+    #-------------------- Fill in your code here ---------------------------
+    J = numpy.zeros((6,num_joints))
+    ee_V_ee = numpy.zeros(6)
 
-    # print(b_T_ee_current)
-    # print(b_T_ee_desired)
-    # print(deltaXmat)
-    # print("deltaTrans is {}").format(deltaTrans)
-    # deltaglobepos = b_T_ee_desired[:3, 3] - b_T_ee_current[:3, 3]
-    # print("deltaTrans before REE is {}").format(deltaglobepos)
-    # REE = b_T_ee_current[:3,:3]
-    # deltaEEpos = numpy.dot(REE, deltaglobepos)
-    # print("deltaTrans from rotational is {}").format(deltaEEpos)
+    T_to_desired = numpy.dot(numpy.linalg.inv(b_T_ee_current),b_T_ee_desired)
 
-    #-------------------- DEBUGGING ---------------------------
-    Tlgain = 1
-    Rotgain = 1
-    VTEE = Tlgain*deltaTrans
-    VTsize = numpy.linalg.norm(VTEE)
-    VREE = Rotgain*deltaRot
-    VRsize = numpy.linalg.norm(VREE)
+    angle, axis = rotation_from_matrix(T_to_desired)
+    ## in base frame
+    delta_p = T_to_desired[:3,3]
+    delta_theta = numpy.dot(axis,angle)
 
-    Tth = 0.1
-    if VTsize > Tth:
-        VTEE = (Tth/VTsize)*VTEE
+    p_dot = delta_p*1
+    theta_dot = delta_theta*1
+
+    #ee_T_b = numpy.linalg.inv(b_T_ee_current)
+    ee_R_b = T_to_desired[:3,:3]
     
-    Rth = 1
-    if VRsize > Rth:
-        VREE = (Rth/VRsize)*VREE
-
-    VEE = numpy.hstack((VTEE, VREE))
-
-    vth = 1e-3
-
-    for ind in range(len(VEE)):
-        if abs(VEE[ind])<vth:
-            VEE[ind] = 0
-
-    # print(VEE)
-
-    Jac = numpy.zeros((6,1))
-
-
-    for jt in joint_transforms:
-        Transf_EE = numpy.dot(numpy.linalg.inv(jt), b_T_ee_current)
-        Rba = numpy.linalg.inv(Transf_EE[:3, :3])
-        Tab = Transf_EE[:3, 3]
-        MomArm = -numpy.dot(Rba, S_matrix(Tab))
-        RightHalf = numpy.vstack((MomArm, Rba))
-        LastCol = RightHalf[:,2]
-        LastCol.shape = (6,1)
-        Jac = numpy.hstack((Jac, LastCol))
-        # Note, can also use given adjoint matrix function to simplify code
-
-    Jac = Jac[:, 1:]
-    epsilon = 1e-7
-    invJac = numpy.linalg.pinv(Jac, epsilon)
-
-    dq = numpy.dot(invJac, VEE)
-
-    if red_control:
-        qsize = len(q_current)
-        qmat = numpy.zeros(qsize)
-        qgain = 1
-        qmat[0] = qgain*(q0_desired - q_current[0])
-        
-        qn = numpy.dot(numpy.identity(qsize) - numpy.dot(invJac, Jac), qmat)
-        dq = dq + qn
-
-    biggestq = max(dq)
+    ee_V_ee[:3] = numpy.dot(ee_R_b,p_dot)
+    ee_V_ee[3:] = numpy.dot(ee_R_b,theta_dot)
     
-    if biggestq>1:
-        dq = dq/biggestq
-
+    for i in range(num_joints):
+        J[:,i] = adjoint_matrix(numpy.dot(numpy.linalg.inv(b_T_ee_current),joint_transforms[i]))[:,5]
+    dq = numpy.dot(numpy.linalg.pinv(J,0.01),ee_V_ee)
     #----------------------------------------------------------------------
     return dq
     
