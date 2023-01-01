@@ -22,6 +22,33 @@ def S_matrix(w):
     S[2,1] =  w[0]
     return S
 
+def R_from_euler(phi, theta, psi):
+    R = numpy.zeros((3,3))
+    R[0,0] = math.cos(phi)*math.cos(theta)
+    R[0,1] = math.cos(phi)*math.sin(theta)*math.sin(psi) - math.sin(phi)*math.cos(psi)
+    R[0,2] = math.cos(phi)*math.sin(theta)*math.sin(psi) + math.sin(phi)*math.cos(psi)
+    R[1,0] = math.sin(phi)*math.cos(theta)
+    R[1,1] = math.sin(phi)*math.sin(theta)*math.sin(psi) + math.cos(phi)*math.cos(psi)
+    R[1,2] = math.sin(phi)*math.sin(theta)*math.cos(psi) - math.cos(phi)*math.sin(psi)
+    R[2,0] = -math.sin(theta)
+    R[2,1] = math.cos(theta)*math.sin(phi)
+    R[2,2] = math.cos(theta)*math.cos(phi)
+    return R
+
+def euler_from_R(matrix):
+    R = numpy.array(matrix, dtype=numpy.float64, copy=False)
+    if abs(R[2,0])==1:
+        raise ValueError("cos theta = 0, solutions degenerate")
+    else:
+        phi1 = math.atan2(R[1,0], R[0,0])
+        theta1 = math.atan2(-R[2,0], math.sqrt(R[2,1]**2 + R[2,2]**2))
+        psi1 = math.atan2(R[2,1], R[2,2])
+        phi2 = math.atan2(-R[1,0], -R[0,0])
+        theta2 = math.atan2(-R[2,0], -math.sqrt(R[2,1]**2 + R[2,2]**2))
+        psi2 = math.atan2(-R[2,1], -R[2,2])
+        # [phi1, theta1, psi1, phi2, theta2, psi2]
+    return numpy.array([psi1, theta1, phi1])
+
 # This is the function that must be filled in as part of the Project.
 def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
                       red_control, q_current, q0_desired):
@@ -32,6 +59,38 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     deltaTrans = deltaXmat[:3, 3]
     ang, ax = rotation_from_matrix(deltaXmat)
     deltaRot = ang*ax
+
+    print('New Data\n######################')
+    # print('New Rotation Data\n######################')
+    # ang_base, ax_base = rotation_from_matrix(b_T_ee_current)
+    # ang_base_des, ax_base_des = rotation_from_matrix(b_T_ee_desired)
+    # current_rotvec = ang_base*ax_base
+    # des_rotvec = ang_base_des*ax_base_des
+    # delta_x_base = des_rotvec - current_rotvec
+    # print('desired angle*axis base: {}, current angle*axis base: {}, delta omega_base is {}').format(des_rotvec, current_rotvec, delta_x_base)
+    # vel_rot = numpy.dot(b_T_ee_current[:3,:3].transpose(), delta_x_base)
+    # print('delta omega_ee from base is ')
+    # print(vel_rot)
+
+    print('Translation Data\n######################')
+    print('delta x_ee from original is ')
+    print(deltaTrans)
+    print('delta x_base from original is ')
+    print(numpy.dot(b_T_ee_current[:3,:3],deltaTrans))
+    print('delta x_base from new method is ')
+    deltaX_base = b_T_ee_desired[:3, 3] - b_T_ee_current[:3, 3]
+    print(deltaX_base)
+
+    print('Rotation Data\n######################')
+    print('delta omega_ee from original is ')
+    print(deltaRot)
+    print('delta omega_base from original is ')
+    deltaRot_base = numpy.dot(b_T_ee_current[:3,:3],deltaRot)
+    print(deltaRot_base)
+    print('delta omega_base using euler is ')
+    print(euler_from_R(b_T_ee_desired)-euler_from_R(b_T_ee_current))
+    print('delta omega_ee using euler is ')
+    print(euler_from_R(deltaXmat[:3,:3]))
     #-------------------- DEBUGGING ---------------------------
 
     # print(b_T_ee_current)
@@ -68,12 +127,49 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
         if abs(VEE[ind])<vth:
             VEE[ind] = 0
 
+    #-------------------- Global Frame Code ---------------------------
+    VTEE_b = Tlgain*deltaX_base
+    VREE_b = Rotgain*deltaRot_base
+    VTsize_b = numpy.linalg.norm(VTEE_b)
+    VRsize_b = numpy.linalg.norm(VREE_b)
+    if VTsize_b > Tth:
+        VTEE_b = (Tth/VTsize_b)*VTEE_b
+    if VRsize_b > Tth:
+        VREE_b = (Tth/VRsize_b)*VTEE_b
+
+    VEE_b = numpy.hstack((VTEE_b, VREE_b))
+
+    for ind in range(len(VEE_b)):
+        if abs(VEE_b[ind])<vth:
+            VEE_b[ind] = 0
+
+    Jac_b = numpy.zeros((6,1))
+    #-------------------- Global Frame Code End ---------------------------
+
     # print(VEE)
 
     Jac = numpy.zeros((6,1))
 
-
+    last_jt = joint_transforms[0]
     for jt in joint_transforms:
+        # debugging lines
+
+        # if numpy.array_equal(last_jt,jt):
+        #     print(jt)
+        # else:
+        #     print(numpy.dot(numpy.linalg.inv(last_jt),jt))
+        # last_jt = jt
+        # print('###################')
+        # print(jt[:3,3])
+        # print('###################')
+
+        # above lines print each joint transform to the next joint. shows that there is some
+        # funky business going on with the align rotation axis with z operation done in the bottom
+        # those funky ones (joints 1, 3, 5 corresponding to jt 2, 4, 6) do their z alignment and
+        # distance offset in the same rotation matrix, so the offset column changes
+        # all z aligned frames behave as expected
+        # NOTE: jt frames do not align with rviz joint frames! they are not representative.
+        # debugging lines end
         Transf_EE = numpy.dot(numpy.linalg.inv(jt), b_T_ee_current)
         Rba = numpy.linalg.inv(Transf_EE[:3, :3])
         Tab = Transf_EE[:3, 3]
@@ -83,6 +179,31 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
         LastCol.shape = (6,1)
         Jac = numpy.hstack((Jac, LastCol))
         # Note, can also use given adjoint matrix function to simplify code
+
+        #-------------------- Global Frame Code ---------------------------
+        Rb_i_1_last_col = jt[:3, 2]
+        db_ee = joint_transforms[-1][:3, 3]
+        db_i_1 = jt[:3, 3]
+        Jac_b_newcol_top = numpy.dot(S_matrix(Rb_i_1_last_col), db_ee - db_i_1)
+        Jac_b_newcol_btm = Rb_i_1_last_col
+        # print('newcol_top is {}').format(numpy.shape(Jac_b_newcol_top))
+        # print(numpy.shape(Jac_b_newcol_btm))
+        LastCol = numpy.hstack((Jac_b_newcol_top, Jac_b_newcol_btm))
+        LastCol.shape = (6,1)
+        Jac_b = numpy.hstack((Jac_b, LastCol))
+
+    Jac_b = Jac_b[:, 1:]
+    epsilon_b = 1e-7
+    invJac_b = numpy.linalg.pinv(Jac_b, epsilon_b)
+
+    dq_b = numpy.dot(invJac_b, VEE_b)
+
+    biggestq = max(dq_b)
+
+    if biggestq>1:
+        dq_b = dq_b/biggestq
+
+        #-------------------- Global Frame Code End ---------------------------
 
     Jac = Jac[:, 1:]
     epsilon = 1e-7
@@ -105,7 +226,7 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
         dq = dq/biggestq
 
     #----------------------------------------------------------------------
-    return dq
+    return dq_b
     
 def convert_from_message(t):
     trans = tf.transformations.translation_matrix((t.translation.x,

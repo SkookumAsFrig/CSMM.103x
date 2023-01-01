@@ -32,6 +32,17 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     deltaTrans = deltaXmat[:3, 3]
     ang, ax = rotation_from_matrix(deltaXmat)
     deltaRot = ang*ax
+
+    ang_base, ax_base = rotation_from_matrix(b_T_ee_current)
+    ang_base_des, ax_base_des = rotation_from_matrix(b_T_ee_desired)
+    delta_x_base = ang_base_des*ax_base_des - ang_base*ax_base
+    print('delta omega_base is ')
+    print(delta_x_base)
+    vel_rot = numpy.dot(b_T_ee_current[:2,:2].transpose(), delta_x_base)
+    print('delta omega_ee from base is ')
+    print(vel_rot)
+    print('delta omega_ee from original is ')
+    print(deltaRot)
     #-------------------- DEBUGGING ---------------------------
 
     # print(b_T_ee_current)
