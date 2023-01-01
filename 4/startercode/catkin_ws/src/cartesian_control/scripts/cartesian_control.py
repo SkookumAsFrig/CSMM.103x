@@ -22,6 +22,12 @@ def S_matrix(w):
     S[2,1] =  w[0]
     return S
 
+def omega_from_euler(phi, theta, psi):
+    rot_mat = numpy.array([[1, 0, math.sin(theta)],[0, math.cos(psi), -math.sin(psi)*math.cos(theta)]\
+        ,[0, -math.sin(psi), -math.cos(psi)*math.cos(theta)]])
+    omega = numpy.dot(rot_mat, numpy.array([psi, theta, phi]))
+    return omega
+
 def R_from_euler(phi, theta, psi):
     R = numpy.zeros((3,3))
     R[0,0] = math.cos(phi)*math.cos(theta)
@@ -60,7 +66,7 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     ang, ax = rotation_from_matrix(deltaXmat)
     deltaRot = ang*ax
 
-    print('New Data\n######################')
+    # print('New Data\n######################')
     # print('New Rotation Data\n######################')
     # ang_base, ax_base = rotation_from_matrix(b_T_ee_current)
     # ang_base_des, ax_base_des = rotation_from_matrix(b_T_ee_desired)
@@ -72,25 +78,28 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     # print('delta omega_ee from base is ')
     # print(vel_rot)
 
-    print('Translation Data\n######################')
-    print('delta x_ee from original is ')
-    print(deltaTrans)
-    print('delta x_base from original is ')
-    print(numpy.dot(b_T_ee_current[:3,:3],deltaTrans))
-    print('delta x_base from new method is ')
+    # print('Translation Data\n######################')
+    # print('delta x_ee from original is ')
+    # print(deltaTrans)
+    # print('delta x_base from original is ')
+    # print(numpy.dot(b_T_ee_current[:3,:3],deltaTrans))
+    # print('delta x_base from new method is ')
     deltaX_base = b_T_ee_desired[:3, 3] - b_T_ee_current[:3, 3]
-    print(deltaX_base)
+    # print(deltaX_base)
 
-    print('Rotation Data\n######################')
-    print('delta omega_ee from original is ')
-    print(deltaRot)
-    print('delta omega_base from original is ')
+    # print('Rotation Data\n######################')
+    # print('delta omega_ee from original is ')
+    # print(deltaRot)
+    # print('delta omega_base from original is ')
     deltaRot_base = numpy.dot(b_T_ee_current[:3,:3],deltaRot)
-    print(deltaRot_base)
-    print('delta omega_base using euler is ')
-    print(euler_from_R(b_T_ee_desired)-euler_from_R(b_T_ee_current))
-    print('delta omega_ee using euler is ')
-    print(euler_from_R(deltaXmat[:3,:3]))
+    # print(deltaRot_base)
+    # print('delta omega_base using euler is (wrong, cannot directly add/subtract euler angles)')
+    # print(euler_from_R(b_T_ee_desired)-euler_from_R(b_T_ee_current))
+    # print('delta omega_ee using euler is ')
+    # euler_ee = euler_from_R(deltaXmat[:3,:3])
+    # print(euler_ee)
+    # print('delta omega_ee using euler rot_method is ')
+    # print(omega_from_euler(euler_ee[2], euler_ee[1], euler_ee[0]))
     #-------------------- DEBUGGING ---------------------------
 
     # print(b_T_ee_current)
@@ -104,18 +113,18 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     # print("deltaTrans from rotational is {}").format(deltaEEpos)
 
     #-------------------- DEBUGGING ---------------------------
-    Tlgain = 1
-    Rotgain = 1
+    Tlgain = 5
+    Rotgain = 5
     VTEE = Tlgain*deltaTrans
     VTsize = numpy.linalg.norm(VTEE)
     VREE = Rotgain*deltaRot
     VRsize = numpy.linalg.norm(VREE)
 
-    Tth = 0.1
+    Tth = 0.3
     if VTsize > Tth:
         VTEE = (Tth/VTsize)*VTEE
     
-    Rth = 1
+    Rth = 3
     if VRsize > Rth:
         VREE = (Rth/VRsize)*VREE
 
@@ -134,8 +143,8 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     VRsize_b = numpy.linalg.norm(VREE_b)
     if VTsize_b > Tth:
         VTEE_b = (Tth/VTsize_b)*VTEE_b
-    if VRsize_b > Tth:
-        VREE_b = (Tth/VRsize_b)*VTEE_b
+    if VRsize_b > Rth:
+        VREE_b = (Rth/VRsize_b)*VREE_b
 
     VEE_b = numpy.hstack((VTEE_b, VREE_b))
 
@@ -203,6 +212,15 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     if biggestq>1:
         dq_b = dq_b/biggestq
 
+    if red_control:
+        qsize = len(q_current)
+        qmat = numpy.zeros(qsize)
+        qgain = 1
+        qmat[0] = qgain*(q0_desired - q_current[0])
+        
+        qn = numpy.dot(numpy.identity(qsize) - numpy.dot(invJac_b, Jac_b), qmat)
+        dq_b = dq_b + qn
+
         #-------------------- Global Frame Code End ---------------------------
 
     Jac = Jac[:, 1:]
@@ -224,6 +242,9 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
     
     if biggestq>1:
         dq = dq/biggestq
+
+    # print (dq_b)
+    # print(invJac_b)
 
     #----------------------------------------------------------------------
     return dq_b
