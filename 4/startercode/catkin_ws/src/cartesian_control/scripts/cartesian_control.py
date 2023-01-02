@@ -68,12 +68,12 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
 
     # print('New Data\n######################')
     # print('New Rotation Data\n######################')
-    # ang_base, ax_base = rotation_from_matrix(b_T_ee_current)
-    # ang_base_des, ax_base_des = rotation_from_matrix(b_T_ee_desired)
-    # current_rotvec = ang_base*ax_base
-    # des_rotvec = ang_base_des*ax_base_des
-    # delta_x_base = des_rotvec - current_rotvec
-    # print('desired angle*axis base: {}, current angle*axis base: {}, delta omega_base is {}').format(des_rotvec, current_rotvec, delta_x_base)
+    ang_base, ax_base = rotation_from_matrix(b_T_ee_current)
+    ang_base_des, ax_base_des = rotation_from_matrix(b_T_ee_desired)
+    current_rotvec = ang_base*ax_base
+    des_rotvec = ang_base_des*ax_base_des
+    delta_xrot_base = des_rotvec - current_rotvec
+    # print('desired angle*axis base: {}, current angle*axis base: {}, delta omega_base is {}').format(des_rotvec, current_rotvec, delta_xrot_base)
     # vel_rot = numpy.dot(b_T_ee_current[:3,:3].transpose(), delta_x_base)
     # print('delta omega_ee from base is ')
     # print(vel_rot)
@@ -114,7 +114,7 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
 
     #-------------------- DEBUGGING ---------------------------
     Tlgain = 5
-    Rotgain = 5
+    Rotgain = 1
     VTEE = Tlgain*deltaTrans
     VTsize = numpy.linalg.norm(VTEE)
     VREE = Rotgain*deltaRot
@@ -138,7 +138,8 @@ def cartesian_control(joint_transforms, b_T_ee_current, b_T_ee_desired,
 
     #-------------------- Global Frame Code ---------------------------
     VTEE_b = Tlgain*deltaX_base
-    VREE_b = Rotgain*deltaRot_base
+    VREE_b = Rotgain*deltaRot_base #delta_xrot_base
+    #using delta xrot base obtained from subtracting two angle-axis rotation vectors appears to result in some instabilities near singularity
     VTsize_b = numpy.linalg.norm(VTEE_b)
     VRsize_b = numpy.linalg.norm(VREE_b)
     if VTsize_b > Tth:
